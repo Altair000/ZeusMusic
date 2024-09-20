@@ -34,6 +34,10 @@ def download_music(video_url, quality):
     # Obtén las cookies de las variables de entorno
     cookies = os.getenv('COOKIES')
     
+    # Guarda las cookies en un archivo temporal
+    with open('cookies.txt', 'w') as f:
+        f.write(cookies)
+    
      """Descarga el audio del video de YouTube y retorna la ruta del archivo MP3."""
     ydl_opts = {
         'format': f'bestaudio[abr<={quality}]',
@@ -45,7 +49,7 @@ def download_music(video_url, quality):
         'outtmpl': 'data/%(title)s.%(ext)s',
         'noplaylist': True,
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:92.0) Gecko/20100101 Firefox/92.0',
-        'cookies': cookies
+        'cookiefile': 'cookies.txt'
     }
 
     if not os.path.exists('data'):
@@ -54,4 +58,8 @@ def download_music(video_url, quality):
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         info = ydl.extract_info(video_url, download=True)
         file_path = f"data/{info['title']}.mp3"
+        
+        # Elimina el archivo de cookies temporal
+        os.remove('cookies.txt')
+        
         return file_path
