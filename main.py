@@ -8,7 +8,7 @@ BOT_TOKEN = os.getenv('Token')
 HEROKU_URL = 'https://zeusmusicbot-610073f53b03.herokuapp.com/'
 
 # Configura el webhook
-HEROKU_APP_NAME = 'zeusmusicbot'  # Asegúrate de definir esto en Heroku
+HEROKU_APP_NAME = 'zeusmusicbot-610073f53b03'  # Asegúrate de definir esto en Heroku
 WEBHOOK_URL = f"https://{HEROKU_APP_NAME}.herokuapp.com/{BOT_TOKEN}"
 
 @app.route('/' + BOT_TOKEN, methods=['POST'])
