@@ -6,7 +6,7 @@ from flask import Flask, request
 app = Flask(__name__)
 TOKEN = os.environ.get('Token')
 
-@app.route('/' + TOKEN, methods=['POST'])
+@app.route('/' + TOKEN, methods=['GET'])
 def getMessage():
     bot.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
     return "¡Mensaje recibido!", 200
