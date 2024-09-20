@@ -6,7 +6,7 @@ from bot.handlers import register_handlers # Asegúrate de importar tus handlers
 app = Flask(__name__)
 
 TOKEN = os.environ.get('TELEGRAM_TOKEN')
-bot = telebot.Telebot(TOKEN)
+bot = telebot.TeleBot(TOKEN)
 
 @app.route('/' + TOKEN, methods=['POST'])
 def getMessage():
