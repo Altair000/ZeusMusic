@@ -1,3 +1,4 @@
+import telebot
 import os
 from bot.handlers import bot
 from flask import Flask, request
