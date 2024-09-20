@@ -3,6 +3,7 @@ import yt_dlp
 from googleapiclient.discovery import build
 
 YT_API = os.getenv('YT_Api')
+chat_id = message.chat.id
 
 def search_music(query):
     """Busca videos en YouTube relacionados con la consulta."""
@@ -56,7 +57,28 @@ def format_cookies():
             name, value = cookie.split('=', 1)
             f.write(f'.youtube.com\tTRUE\t/\t0\t{name}\t{value}\n')
 
+def verify_cookies(bot, chat_id):
+    if not os.path.exists('cookies.txt'):
+        bot.send_message(chat_id, "El archivo cookies.txt no se encontró.")
+        return False
+    
+    with open('cookies.txt', 'r') as f:
+        content = f.readlines()
+        
+        if len(content) < 3:  # Comprobamos que hay más de las líneas de cabecera
+            bot.send_message(chat_id, "El archivo de cookies está vacío o incompleto.")
+            return False
+
+    bot.send_message(chat_id, "Las cookies se han creado correctamente.")
+    return True
+
+# Formatear y verificar las cookies
 format_cookies()
+# Supón que tienes el bot y chat_id del usuario ya definidos
+if verify_cookies(bot, chat_id):
+    bot.send_message(chat_id, "El archivo de cookies está listo para usarse.")
+else:
+    bot.send_message(chat_id, "Hubo un problema con el archivo de cookies.")
 
 def download_music(video_url, quality):
     
