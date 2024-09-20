@@ -7,9 +7,6 @@ from bot.buttons import create_quality_buttons
 TOKEN = os.getenv('Token')
 bot = telebot.TeleBot(TOKEN)
 
-# Almacenar resultados para usar después
-    user_search_results = {}
-
 def register_handlers(bot):
     @bot.message_handler(commands=['start'])
     def handle_start(message):
@@ -20,6 +17,9 @@ def register_handlers(bot):
         markup.add(info_button, developer_button)
     
         bot.send_message(message.chat.id, "¡Bienvenido al bot de descarga de música!", reply_markup=markup)
+
+    # Almacenar resultados para usar después
+    user_search_results = {}
 
     # Manejador de mensajes (búsqueda de canciones)
     @bot.message_handler(func=lambda message: not message.text.startswith('/'))
