@@ -3,7 +3,7 @@ from bot.handlers import bot
 from flask import Flask, request
 
 app = Flask(__name__)
-TOKEN = os.getenv('Token')
+BOT_TOKEN = os.getenv('Token')
 HEROKU_URL = 'https://zeusmusicbot-610073f53b03.herokuapp.com/'
 
 @app.route(f"/{TOKEN}", methods=['POST'])
