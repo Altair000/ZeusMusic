@@ -15,7 +15,7 @@ def getMessage():
 @app.route("/")
 def webhook():
     bot.remove_webhook()
-    bot.set_webhook(url='https://zeuschk-64ea0cb25362.herokuapp.com/' + TOKEN)
+    bot.set_webhook(url='https://zeusmusicbot-610073f53b03.herokuapp.com/' + TOKEN)
     return "¡Webhook configurado!", 200
 
 # Main
