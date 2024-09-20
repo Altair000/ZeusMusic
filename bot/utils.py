@@ -40,6 +40,7 @@ def download_music(video_url, quality):
         }],
         'outtmpl': 'data/%(title)s.%(ext)s',
         'noplaylist': True,
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:92.0) Gecko/20100101 Firefox/92.0'
     }
 
     if not os.path.exists('data'):
