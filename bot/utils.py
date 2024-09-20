@@ -29,9 +29,7 @@ def search_music(query):
         })
     return results
 
-def download_music(video_url, quality):
-   
-    def format_cookies():
+def format_cookies():
     # Simulación de las cookies de entrada como una lista de cadenas
     raw_cookies = [
         "SIDCC=AKEyXzU-V_f2F47DSDV86Am6tqUf",
@@ -51,8 +49,9 @@ def download_music(video_url, quality):
             name, value = cookie.split('=', 1)
             f.write(f'.youtube.com\tTRUE\t/\t0\t{name}\t{value}\n')
 
-    format_cookies()
+format_cookies()
 
+def download_music(video_url, quality):
     
     """Descarga el audio del video de YouTube y retorna la ruta del archivo MP3."""
     ydl_opts = {
