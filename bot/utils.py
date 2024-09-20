@@ -51,7 +51,7 @@ def download_music(video_url, quality):
         'outtmpl': 'data/%(title)s.%(ext)s',
         'noplaylist': True,
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36',
-        'cookiefile': 'cookies.txt'
+        'cookies': 'cookies.txt'
     }
 
     if not os.path.exists('data'):
