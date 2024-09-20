@@ -1,24 +1,23 @@
 import os
 import telebot
 from flask import Flask, request
-from bot.handlers import register_handlers  # Asegúrate de importar tus handlers
+from bot.handlers import register_handlers, bot  # Asegúrate de importar tus handlers
 
 app = Flask(__name__)
-TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
-bot = telebot.TeleBot(TELEGRAM_TOKEN)
 
-@app.route('/' + TELEGRAM_TOKEN, methods=['POST'])
+TOKEN = os.environ.get('TELEGRAM_TOKEN')
+
+@app.route('/' + TOKEN, methods=['POST'])
+def getMessage():
+    bot.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
+    return "¡Mensaje recibido!", 200
+
+@app.route("/")
 def webhook():
-    update = request.get_json()
-    if update:
-        bot.process_new_updates([telebot.types.Update.de_json(update)])
-    return 'OK', 200
-
-if __name__ == '__main__':
-    # Registrar los handlers
-    register_handlers(bot)
-
-    # Configurar el webhook
     bot.remove_webhook()
-    bot.set_webhook(url=f"https://zeusmusicbot.herokuapp.com/{TELEGRAM_TOKEN}")
-    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
+    bot.set_webhook(url='https://zeuschk-64ea0cb25362.herokuapp.com/' + TOKEN)
+    return "¡Webhook configurado!", 200
+
+# Main
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000)))
