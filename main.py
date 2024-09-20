@@ -4,10 +4,10 @@ from bot.handlers import bot
 from flask import Flask, request
 
 app = Flask(__name__)
-BOT_TOKEN = os.getenv('Token')
-HEROKU_URL = 'https://zeusmusicbot-610073f53b03.herokuapp.com/'
+handle_exceptions(app)
+TOKEN = os.environ.get('Token')
 
-@app.route('/' + BOT_TOKEN, methods=['POST'])
+@app.route('/' + TOKEN, methods=['POST'])
 def getMessage():
     bot.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
     return "¡Mensaje recibido!", 200
@@ -15,8 +15,9 @@ def getMessage():
 @app.route("/")
 def webhook():
     bot.remove_webhook()
-    bot.set_webhook(url=HEROKU_URL + BOT_TOKEN)
+    bot.set_webhook(url='https://zeusmusicbot-610073f53b03.herokuapp.com/' + TOKEN)
     return "¡Webhook configurado!", 200
 
+# Main
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000)))
