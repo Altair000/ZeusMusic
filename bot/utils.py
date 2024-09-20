@@ -61,7 +61,7 @@ def format_cookies():
             name, value = cookie.split('=', 1)
             f.write(f'.youtube.com\tTRUE\t/\t0\t{name}\t{value}\n')
 
-def verify_cookies(bot, chat_id):
+def verify_cookies():
     if not os.path.exists('cookies.txt'):
         print("El archivo cookies.txt no se encontró.")
         return False
@@ -79,7 +79,7 @@ def verify_cookies(bot, chat_id):
 # Formatear y verificar las cookies
 format_cookies()
 # Supón que tienes el bot y chat_id del usuario ya definidos
-if verify_cookies(bot, chat_id):
+if verify_cookies():
     print("El archivo de cookies está listo para usarse.")
 else:
     print("Hubo un problema con el archivo de cookies.")
