@@ -36,14 +36,17 @@ def search_music(query):
 def format_cookies():
     # Simulación de las cookies de entrada como una lista de cadenas
     raw_cookies = [
-        "SIDCC=AKEyXzU-V_f2F47DSDV86Am6tqUf",
-        "Gt=DbrrY3pmNEItO||8YPWH-EBUeGA",
-        "PREF=tz=America.Indiana/Petersburg",
-        "APISID=yxmzoPCqA4SVuF95/A0AQ4Ynccukl",
-        "SAPISID=myWQZPXhvoPB1ZiB/A3ugP53KKuU",
-        "SID=9.a000oAhhDGcqPT9syBMMUhq2eT",
-        "_Secure-PAPISID=myWQZPXhvoPB1ZiB/A3ugP53KKuU"
-    ]
+      "SID=g.a000oQgjBHY3gzfE9FFVTPJhKzOEhF1Wogfy4Kb9JLrt3nziBseQ4kRJl7EOfbA3o_XwKb17iQACgYKAaYSARcSFQHGX2MilP07jdT4R03x1jD0Zwhx0xoVAUF8yKpV39-1yO1MH8__q1doXOQB0076",
+      "HSID=A2NnZNqSDtngwEsLE",
+      "SSID=A3YTB-7HuHcZvHMas",
+      "APISID=zE8J0TbH0qhzUmio/A5bueny_hwYPxDaRn",
+      "SAPISID=wO5O0tVaRmz9x4xw/A5mkJfPl9uNEexu8v",
+      "PREF=tz=America.Chicago",
+      "SIDCC=AKEyXzVJ6WVH7BqLb4EsLHvb1eKFz__y_v54K3Re38IixSjtwJerfRXwJ1-kcui9fLp7XeRz",
+      "_Secure-3PAPISID=wO5O0tVaRmz9x4xw/A5mkJfPl9uNEexu8v",
+      "_Secure-3PSID=g.a000oQgjBHY3gzfE9FFVTPJhKzOEhF1Wogfy4Kb9JLrt3nziBseQAqt7ol-HweeLxWZOWk9iyAACgYKAXwSARcSFQHGX2MiHraUPvjzlgn2npYPmCzMUhoVAUF8yKprC_oLh5hbx3aUq_dpgegt0076",
+      "LOGIN_INFO=AFmmF2swRQIgbTb5aUUpj4e8etclX9IitSXi0dnb7wgm9Q88xjaY5s4CIQCEW6KqPoIqH0sOTN6rCWXr8WVALcfCWLLTHSBphEgdeA:QUQ3MjNmekhndG1sbEVjUHJDOXN4UWNiS1Q4WHFWTkowV1FuSUdELThpQ2JBTU5hRnF5WGtBaTNpOGNGVzk0dkd2WTFZUjhCNmVuSkFwQXk3OUtMeG9CMFN2TG5MbFBnQUxCVHNzMW9JcGpZVlBtS0RTbllacmFmZTNrWjNPT0pBY2RpOXlxLW5hZnI3a3MxZTJiUldfMmo3elVSSzFZRzJR"
+      ]
 
     with open('cookies.txt', 'w') as f:
         f.write("# Netscape HTTP Cookie File\n")
