@@ -30,7 +30,11 @@ def search_music(query):
     return results
 
 def download_music(video_url, quality):
-    """Descarga el audio del video de YouTube y retorna la ruta del archivo MP3."""
+   
+    # Obtén las cookies de las variables de entorno
+    cookies = os.getenv('COOKIES')
+    
+     """Descarga el audio del video de YouTube y retorna la ruta del archivo MP3."""
     ydl_opts = {
         'format': f'bestaudio[abr<={quality}]',
         'postprocessors': [{
@@ -40,7 +44,8 @@ def download_music(video_url, quality):
         }],
         'outtmpl': 'data/%(title)s.%(ext)s',
         'noplaylist': True,
-        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:92.0) Gecko/20100101 Firefox/92.0'
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:92.0) Gecko/20100101 Firefox/92.0',
+        'cookies': cookies
     }
 
     if not os.path.exists('data'):
