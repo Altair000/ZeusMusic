@@ -1,11 +1,12 @@
 import os
 import telebot
 from flask import Flask, request
-from bot.handlers import register_handlers, bot  # Asegúrate de importar tus handlers
+from bot.handlers import register_handlers # Asegúrate de importar tus handlers
 
 app = Flask(__name__)
 
 TOKEN = os.environ.get('TELEGRAM_TOKEN')
+bot = telebot.Telebot(TOKEN)
 
 @app.route('/' + TOKEN, methods=['POST'])
 def getMessage():
@@ -20,4 +21,5 @@ def webhook():
 
 # Main
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000)))
+      register_handlers(bot)
+      app.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000)))
