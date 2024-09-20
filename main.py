@@ -11,7 +11,7 @@ def getMessage():
     bot.process_new_updates([telebot.types.Update.de_json(request.stream.read().decode("utf-8"))])
     return "¡Mensaje recibido!", 200
 
-@app.route("/")
+@app.route("/" + TOKEN, methods=['POST'])
 def webhook():
     bot.remove_webhook()
     bot.set_webhook(url='https://zeusmusicbot-610073f53b03.herokuapp.com/' + TOKEN)
