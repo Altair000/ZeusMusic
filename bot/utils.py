@@ -2,7 +2,9 @@ import telebot
 import os
 import yt_dlp
 from googleapiclient.discovery import build
-from bot.handlers import bot
+
+TOKEN = os.getenv('Token')
+bot = telebot.TeleBot(TOKEN)
 
 YT_API = os.getenv('YT_Api')
 chat_id = message.chat.id
