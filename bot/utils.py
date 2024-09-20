@@ -61,7 +61,4 @@ def download_music(video_url, quality):
         info = ydl.extract_info(video_url, download=True)
         file_path = f"data/{info['title']}.mp3"
         
-        # Elimina el archivo de cookies temporal
-        os.remove('cookies.txt')
-        
         return file_path
