@@ -13,7 +13,8 @@ def search_music(query):
         q=query,
         part='snippet',
         type='video',
-        maxResults=10
+        maxResults=10,
+        videoCategoryId='10'
     )
     response = request.execute()
 
@@ -22,11 +23,15 @@ def search_music(query):
     for item in response['items']:
         video_title = item['snippet']['title']
         video_id = item['id']['videoId']
-        video_url = f"https://www.youtube.com/watch?v={video_id}"
-        results.append({
-            'title': video_title,
-            'url': video_url
-        })
+        live_status = item['snippet']['liveBroadcastContent']
+        # Filtrar videos en estreno o en vivo
+        if live_status == 'none':  # Solo videos que no son estrenos ni en vivo
+            video_url = f"https://www.youtube.com/watch?v={video_id}"
+            results.append({
+                'title': video_title,
+                'url': video_url
+            })
+    
     return results
 
 def format_cookies():
