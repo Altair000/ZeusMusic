@@ -13,7 +13,8 @@ def search_music(query):
         q=query,
         part='snippet',
         type='video',
-        maxResults=10
+        maxResults=10,
+        order='viewCount'
     )
     response = request.execute()
 
