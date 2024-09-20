@@ -4,7 +4,7 @@ from bot.handlers import bot, register_handlers
 from flask import Flask, request
 
 app = Flask(__name__)
-TOKEN = os.environ.get('Token')
+TOKEN = "7465330159:AAHD3x86Qn5f69ztjR5YrK-VbO11589Bntw"
 
 @app.route('/' + TOKEN, methods=['POST'])
 def webhook():
