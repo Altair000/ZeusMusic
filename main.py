@@ -6,7 +6,7 @@ app = Flask(__name__)
 BOT_TOKEN = os.getenv('Token')
 HEROKU_URL = 'https://zeusmusicbot-610073f53b03.herokuapp.com/'
 
-@app.route(f"/{TOKEN}", methods=['POST'])
+@app.route(f"/{BOT_TOKEN}", methods=['POST'])
 def receive_updates():
     json_str = request.get_data().decode('UTF-8')
     update = telebot.types.Update.de_json(json_str)
