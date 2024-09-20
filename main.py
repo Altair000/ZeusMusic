@@ -6,7 +6,7 @@ from flask import Flask, request
 app = Flask(__name__)
 TOKEN = os.environ.get('Token')
 
-@app.route('/' + TOKEN, methods=['POST'])
+@app.route('/' + TOKEN, methods=['POST', 'GET'])
 def webhook():
     try:
         update = request.get_json()
