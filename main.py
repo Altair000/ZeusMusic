@@ -4,7 +4,6 @@ from bot.handlers import bot
 from flask import Flask, request
 
 app = Flask(__name__)
-handle_exceptions(app)
 TOKEN = os.environ.get('Token')
 
 @app.route('/' + TOKEN, methods=['POST'])
